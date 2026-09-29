@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerenciador de Campanhas RPG</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Gerenciador de Campanhas RPG</h1>
+    <button id="btn-nova-campanha" class="btn">+ Nova Campanha</button>
+  </header>
+
+  <main id="app">
+    <!-- ===================== TELA: LISTA DE CAMPANHAS ===================== -->
+    <section id="tela-lista" class="tela">
+      <h2>Minhas Campanhas</h2>
+      <div id="lista-campanhas" class="grid-campanhas"></div>
+    </section>
+
+    <!-- ===================== TELA: DETALHE DA CAMPANHA ===================== -->
+    <section id="tela-detalhe" class="tela" hidden>
+      <button id="btn-voltar" class="link-btn">&larr; Voltar</button>
+      <h2 id="detalhe-nome"></h2>
+      <p id="detalhe-info" class="muted"></p>
+      <p id="detalhe-descricao"></p>
+
+      <div class="colunas">
+        <div class="coluna">
+          <div class="coluna-header">
+            <h3>Personagens</h3>
+            <button id="btn-novo-personagem" class="btn btn-sm">+ Ficha</button>
+          </div>
+          <div id="lista-personagens"></div>
+        </div>
+
+        <div class="coluna">
+          <div class="coluna-header">
+            <h3>Sessões</h3>
+            <button id="btn-nova-sessao" class="btn btn-sm">+ Sessão</button>
+          </div>
+          <div id="lista-sessoes"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== MODAL: NOVA CAMPANHA ===================== -->
+  <dialog id="modal-campanha" class="modal">
+    <form id="form-campanha">
+      <h3>Nova Campanha</h3>
+      <label>Nome da campanha
+        <input type="text" name="nome" maxlength="100" required>
+      </label>
+      <label>Sistema de jogo
+        <input type="text" name="sistemaDeJogo" maxlength="50" placeholder="Ex: D&amp;D 5e">
+      </label>
+      <label>Seu nome (Mestre)
+        <input type="text" name="mestreNome" maxlength="100" required>
+      </label>
+      <label>Descrição
+        <textarea name="descricao" rows="3" maxlength="2000"></textarea>
+      </label>
+      <p class="erro-form" role="alert" hidden></p>
+      <div class="modal-actions">
+        <button type="button" class="btn-sec" data-close>Cancelar</button>
+        <button type="submit" class="btn">Criar campanha</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- ===================== MODAL: NOVA FICHA ===================== -->
+  <dialog id="modal-personagem" class="modal">
+    <form id="form-personagem">
+      <h3>Nova Ficha de Personagem</h3>
+      <label>Nome do personagem
+        <input type="text" name="nome" maxlength="100" required>
+      </label>
+      <label>Tipo
+        <select name="tipo">
+          <option value="PC">PC (personagem de jogador)</option>
+          <option value="NPC">NPC</option>
+        </select>
+      </label>
+      <label>Nome do jogador
+        <input type="text" name="jogadorNome" maxlength="100">
+      </label>
+      <p class="erro-form" role="alert" hidden></p>
+      <div class="modal-actions">
+        <button type="button" class="btn-sec" data-close>Cancelar</button>
+        <button type="submit" class="btn">Salvar ficha</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- ===================== MODAL: NOVA SESSÃO ===================== -->
+  <dialog id="modal-sessao" class="modal">
+    <form id="form-sessao">
+      <h3>Registrar Sessão</h3>
+      <label>Data
+        <input type="date" name="data" required>
+      </label>
+      <label>Participantes
+        <input type="text" name="participantes" maxlength="300" placeholder="Ex: João, Maria, Pedro">
+      </label>
+      <label>Resumo
+        <textarea name="resumo" rows="3" maxlength="4000"></textarea>
+      </label>
+      <p class="erro-form" role="alert" hidden></p>
+      <div class="modal-actions">
+        <button type="button" class="btn-sec" data-close>Cancelar</button>
+        <button type="submit" class="btn">Registrar sessão</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
