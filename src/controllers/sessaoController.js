@@ -13,6 +13,15 @@ class SessaoController {
   listarPorCampanha(req, res) {
     res.json(sessaoService.listarPorCampanha(req.params.campanhaId));
   }
+
+  atualizarSessao(req, res) {
+    res.json(sessaoService.atualizar(req.params.id, req.body || {}));
+  }
+
+  excluirSessao(req, res) {
+    sessaoService.excluir(req.params.id);
+    res.status(204).end();
+  }
 }
 
 module.exports = new SessaoController();

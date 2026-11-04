@@ -70,10 +70,10 @@
     </form>
   </dialog>
 
-  <!-- ===================== MODAL: NOVA FICHA ===================== -->
+  <!-- ===================== MODAL: FICHA (NOVA / EDITAR) ===================== -->
   <dialog id="modal-personagem" class="modal">
     <form id="form-personagem">
-      <h3>Nova Ficha de Personagem</h3>
+      <h3 data-titulo>Nova Ficha de Personagem</h3>
       <label>Nome do personagem
         <input type="text" name="nome" maxlength="100" required>
       </label>
@@ -89,15 +89,33 @@
       <p class="erro-form" role="alert" hidden></p>
       <div class="modal-actions">
         <button type="button" class="btn-sec" data-close>Cancelar</button>
-        <button type="submit" class="btn">Salvar ficha</button>
+        <button type="submit" class="btn" data-botao>Salvar ficha</button>
       </div>
     </form>
   </dialog>
 
-  <!-- ===================== MODAL: NOVA SESSÃO ===================== -->
+  <!-- ===================== MODAL: ITEM (NOVO / EDITAR) ===================== -->
+  <dialog id="modal-item" class="modal">
+    <form id="form-item">
+      <h3 data-titulo>Novo Item</h3>
+      <label>Nome do item
+        <input type="text" name="nome" maxlength="100" required>
+      </label>
+      <label>Quantidade
+        <input type="number" name="quantidade" min="1" max="1000000" step="1" value="1" required>
+      </label>
+      <p class="erro-form" role="alert" hidden></p>
+      <div class="modal-actions">
+        <button type="button" class="btn-sec" data-close>Cancelar</button>
+        <button type="submit" class="btn" data-botao>Adicionar item</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- ===================== MODAL: SESSÃO (NOVA / EDITAR) ===================== -->
   <dialog id="modal-sessao" class="modal">
     <form id="form-sessao">
-      <h3>Registrar Sessão</h3>
+      <h3 data-titulo>Registrar Sessão</h3>
       <label>Data
         <input type="date" name="data" required>
       </label>
@@ -110,9 +128,19 @@
       <p class="erro-form" role="alert" hidden></p>
       <div class="modal-actions">
         <button type="button" class="btn-sec" data-close>Cancelar</button>
-        <button type="submit" class="btn">Registrar sessão</button>
+        <button type="submit" class="btn" data-botao>Registrar sessão</button>
       </div>
     </form>
+  </dialog>
+
+  <!-- ===================== MODAL: CONFIRMAR EXCLUSÃO ===================== -->
+  <dialog id="modal-confirmar" class="modal">
+    <h3>Confirmar exclusão</h3>
+    <p id="confirmar-mensagem"></p>
+    <div class="modal-actions">
+      <button type="button" class="btn-sec" id="confirmar-cancelar">Cancelar</button>
+      <button type="button" class="btn btn-perigo" id="confirmar-ok">Excluir</button>
+    </div>
   </dialog>
 
   <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>

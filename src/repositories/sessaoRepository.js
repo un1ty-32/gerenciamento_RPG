@@ -10,6 +10,12 @@ class SessaoRepository {
     this.stmtListarPorCampanha = db.prepare(
       'SELECT * FROM sessao WHERE campanha_id = ? ORDER BY data DESC, id DESC'
     );
+    this.stmtAtualizar = db.prepare(`
+      UPDATE sessao
+         SET data = @data, participantes = @participantes, resumo = @resumo
+       WHERE id = @id
+    `);
+    this.stmtExcluir = db.prepare('DELETE FROM sessao WHERE id = ?');
   }
 
   salvar(sessao) {
@@ -23,6 +29,15 @@ class SessaoRepository {
 
   listarPorCampanha(campanhaId) {
     return this.stmtListarPorCampanha.all(campanhaId);
+  }
+
+  atualizar(id, dados) {
+    this.stmtAtualizar.run({ ...dados, id });
+    return this.buscarPorId(id);
+  }
+
+  excluir(id) {
+    return this.stmtExcluir.run(id).changes > 0;
   }
 }
 

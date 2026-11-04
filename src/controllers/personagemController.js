@@ -14,9 +14,32 @@ class PersonagemController {
     res.json(personagemService.listarPorCampanha(req.params.campanhaId));
   }
 
+  atualizarFicha(req, res) {
+    res.json(personagemService.atualizarFicha(req.params.id, req.body || {}));
+  }
+
+  excluirFicha(req, res) {
+    personagemService.excluirFicha(req.params.id);
+    res.status(204).end();
+  }
+
+  // ---------- Itens ----------
+  listarItens(req, res) {
+    res.json(personagemService.listarItens(req.params.id));
+  }
+
   adicionarItem(req, res) {
     const itens = personagemService.adicionarItem(req.params.id, req.body || {});
     res.status(201).json(itens);
+  }
+
+  atualizarItem(req, res) {
+    res.json(personagemService.atualizarItem(req.params.id, req.body || {}));
+  }
+
+  excluirItem(req, res) {
+    personagemService.excluirItem(req.params.id);
+    res.status(204).end();
   }
 }
 
