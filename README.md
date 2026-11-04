@@ -48,3 +48,5 @@ public/                   # front-end (index.html, style.css, app.js)
 
 Erros retornam JSON `{ "erro": "mensagem" }` com 400 (valida√ß√£o),
 404 (n√£o encontrado) ou 500 (erro interno).
+
+IteraÁ„o 2 em desenvolvimento.
